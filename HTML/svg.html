@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style type="text/css">
+            #div1 {width:350px;height:70px;padding:10px;border:1px solid #aaaaaa;}
+        </style>
+        <script>
+            function allowDrop(ev)
+            {
+                ev.preventDefault();
+            }
+
+            function drag(ev)
+            {
+                ev.dataTransfer.setData("Text",ev.target.id);
+            }
+
+            function drop(ev)
+            {
+                ev.preventDefault();
+                var data=ev.dataTransfer.getData("Text");
+                ev.target.appendChild(document.getElementById(data));
+            }
+        </script>
+    </head>
+    <body>
+        <nav>
+            <a href="https://www.baidu.com">HTML</a> |
+            <a href="/css/">CSS</a> |
+            <a href="/js/">JavaScript</a> |
+            <a href="/jquery/">jQuery</a>
+        </nav>
+        <figure>
+            <img src="images/img_pulpit.jpg" alt="The Pulpit Rock" width="304" height="228">
+            <figcaption>
+                Fig.1 - A view of the pulpit rock in Norway.
+            </figcaption>
+        </figure>
+        <form action="demo-form.php">
+            选择你喜欢的颜色: <input type="color" name="favcolor">
+            <br/>
+            <input type="submit">
+        </form>
+        <div style="text-align:center">
+            <button onclick="playPause()">播放/暂停</button>
+            <button onclick="makeBig()">放大</button>
+            <button onclick="makeSmall()">缩小</button>
+            <button onclick="makeNormal()">普通</button>
+            <br/> 
+            <video id="video1" width="420">
+                <source src="mov_bbb.mp4" type="video/mp4">
+                您的浏览器不支持 HTML5 video 标签。
+            </video>
+        </div>
+        <script>
+            var myVideo=document.getElementById("video1"); 
+
+            function playPause()
+            { 
+                if (myVideo.paused) 
+                myVideo.play(); 
+                else 
+                myVideo.pause(); 
+            } 
+
+            function makeBig()
+            { 
+                myVideo.width=560; 
+            } 
+
+            function makeSmall()
+            { 
+                myVideo.width=320; 
+            } 
+
+            function makeNormal()
+            { 
+                myVideo.width=420; 
+            } 
+        </script>
+        <audio controls>
+            <source src="horse.ogg" type="audio/ogg">
+            您的浏览器不支持 audio 元素。
+        </audio>
+        <video width="320" height="240" controls>
+            <source src="movie.mp4" type="video/mp4">
+            您的浏览器不支持 HTML5 video 标签。
+        </video>
+        <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <br/>
+        <img id="drag1" src="images/logo.png" draggable="true" ondragstart="drag(event)" width="336" height="69">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="190">
+            <polygon points="100,10 40,180 190,60 10,60 160,180" style="fill:lime;stroke:purple;stroke-width:5;fill-rule:evenodd;">
+            </polygon>
+        </svg>
+ 
+    </body>
+</html>	

@@ -1,0 +1,291 @@
+按键 	作用
+Ctrl+d 	键盘输入结束或退出终端
+Ctrl+s 	暂定当前程序，暂停后按下任意键恢复运行
+Ctrl+z 	将当前程序放到后台运行，恢复到前台为命令fg
+Ctrl+a 	将光标移至输入行头，相当于Home键
+Ctrl+e 	将光标移至输入行末，相当于End键
+Ctrl+k 	删除从光标所在位置到行末
+Alt+Backspace 	向前删除一个单词
+Shift+PgUp 	将终端显示向上滚动
+Shift+PgDn 	将终端显示向下滚动
+
+Shell 常用通配符：
+字符 	含义
+* 	匹配 0 或多个字符
+? 	匹配任意一个字符
+[list] 	匹配 list 中的任意单一字符
+[!list] 	匹配 除list 中的任意单一字符以外的字符
+[c1-c2] 	匹配 c1-c2 中的任意单一字符 如：[0-9] [a-z]
+{string1,string2,...} 	匹配 sring1 或 string2 (或更多)其一字符串
+{c2..c2} 	匹配 c1-c2 中全部字符 如{1..10}
+
+
+
+
+1：在其他目录运行命令，然后自动返回到当前工作目录,在命令外边添加括号()(cd Code_C && ls -l)
+
+文件或文件夹重命名快捷键F2
+
+Tab补全
+可以唯一标识的命令或参数一次Tab自动补全
+不能唯一标识按两次Tab提示所有
+
+ls -1 一行显示一个
+ls -a 显示全部文件包括隐藏文件
+ls -s 显示文件大小
+ls -l 以长模式显示
+ls -h 适合人类查看的模式
+ls -i 显示文件的索引
+
+清屏Ctrl+l/clear
+
+选项为一个单词时用--
+--help
+
+date 显示时间
+date +%Y	显示年份
+date +%y	显示年份的最后两位
+date +%M	显示分钟
+date +%m	显示月份
+
+cal         	显示本月日历
+cal 2012	显示某年日历
+cal 12 2012 	显示某年某月
+
+bc	计算器
+scale=4	保留小数点几位
+quit	退出计算器
+
+
+history 记录敲过的命令历史，默认记录1000个命令
+！22	执行记录中的第22条命令
+
+Ctrl+a	跳到本行开头
+Ctrl+e	跳到本行结尾
+Ctrl加左右箭头 一个单词的跳
+Ctrl+u 剪切光标之前的内容
+Ctrl+k 剪切光标之后的内容
+Ctrl+y 粘贴
+
+复用上次的参数(引用上一个命令的最后部分)
+Esc松手后按.
+
+^
+touch xx
+^xx^yy	相当于执行touch yy
+
+复制粘贴 选中复制内容点击鼠标滚轮
+在已打开的终端打开终端Ctrl+Shift+t
+终端的切换Ctrl+Shift+PgUp/PgDn
+关闭终端exit Ctrl+d
+
+帮助
+whatis	命令的作用
+ls --help	命令的用法
+
+man passwd	手册
+/root	关键词高亮
+n从上向下查找
+N从下向上查找
+^DESC匹配开头
+man 5 passwd	匹配章节
+man -k clock 	匹配部分字
+man hosts.allow	配置文件的用法
+
+info passwd
+
+/usr/share/doc/	帮助文档
+
+sync	缓存写入硬盘
+
+关机
+普通用户无法关机
+shutdown -h 10	10分钟后关机
+shutdown -k 10	10分钟后显示关机
+reboot	重启
+poweroff 关机
+reboot -f	立即关机
+poweroff -f	立即关机
+
+runlevel	查看运行级别
+init 3	级别切换
+startx	开启图形化界面
+
+root密码破解
+开机界面任意键
+e
+kenel -->e
+空格 输入1/s
+b
+passwd-->输入新密码
+exit
+
+
+文件权限
+- 普通文件
+d 文件夹
+b 设备文件（块设备：U盘）
+c 设备文件（字符文件：鼠标，键盘）
+l 快捷方式（软连接）
+in -s install.log xx	建立快捷方式
+
+
+u,g,o 	r,w,x 	+,-,=
+a=ugo
+chmod u+x,g+w,o-r filename
+,两边不要空格
+chomd +w filename	仅对所有者加w权限
+chomd +x filename	全部加x权限
+1=x
+2=w
+3=wx
+4=r
+5=rx
+6=rw
+7=rwx
+ls -l 	查看文件夹中内容的权限
+ls -ld	查看该文件夹的权限
+chomd 000 filename 不会改变文件夹内部文件的权限
+chomd -R 000 filename	递归改变文件夹和其内部文件的权限
+
+chown tom filename	更改所有者为tom
+chown tom:tom filename	更改所有者和所有组
+chown tom.tom filename
+
+chgrp root filename
+chown -R tom filename 	递归内部文件的用户
+
+文件夹
+bin	二进制文件
+boot	系统启动文件，内核，grub
+dev	设备文件
+etc	配置文件
+home	用户家目录
+lib	链接库文件
+media	挂载点，U盘挂载
+mnt	挂载点，手工挂载
+opt	软件包，源码安装目录
+proc	内核参数，不占用磁盘大小
+root	root家目录
+sbin	二进制文件，系统
+temp	临时文件
+usr	软件默认安装位置
+var	日志文件，数据库文件，缓存文件
+相对路径
+绝对路径
+uname	系统
+uname -i	系统架构	
+uname -r	内核版本
+uname -a	全部信息
+lsb_release -a	系统信息
+
+cd 目录
+cd ..	上一层目录
+～	用户家目录
+cd = cd ~
+cd ～tom/
+cd -	退回上次所在目录
+
+mkdir xx	创建文件夹
+rmdir xx	删除文件夹（非空）
+rmdir xx/yy	当xx不存在命令无法执行
+rmdir -p xx/yy	同时创建父文件夹
+mkdir -p xx/{1,2,3}	创建xx父文件夹同时创建1,2,3子文件夹
+rmdir -p xx/1	同时删除父文件夹，但子文件夹唯一，不存在其他文件
+rm -rf xx	
+echo $PATH	查看path
+PATH=":/filename"	添加到path	
+ls -ld --time=ctime filename	查看创建时间
+ls -ld --time-atime filename	查看访问时间
+
+复制文件
+cp [选项]... path_file path_file
+cp -rf /etc/ /mnt	复制文件夹 
+cp -p 			同时复制文件属性信息
+cp -a			可以复制文件夹和文件属性信息
+cp -u			保留最新文件
+cp xx yy	xx快捷方式	复制xx指向文件并重命名未yy
+cp -d xx zz		复制快捷方式
+mv [选项] pathfile pathfile
+mv x yy		重命名
+rm -rf		删除文件
+basename		只显示文件名
+dirname			只显示路径
+cat tac head nl tail more less od	查看文本内容
+cat	查看小文件
+cat -n	加行号
+tac	倒叙查看
+nl	自动加行号，省略空行
+nl -b a filename	不省略空行
+more	filename	分屏显示
+	回车	一行一行向后显示
+	空格	一屏一屏的向后显示
+	q	退出
+less	支持pgup,pgdn,home,end
+	/http 关键字查找
+	大写N	从下往上查找
+	小写n	从上往下查找
+head	查看前几行默认前10行
+head -n 5 filename
+head -3 filename
+tail	查看未行默认5
+tail -n 3 filename
+tail -3 filename 
+tail -f filename		实时监控例如日志文件
+od -t c /bin/ls			指定格式查看
+strings /bin/ls	
+
+touch 时间戳	
+touch xx			创建新文件
+ll=ls -l
+touch yy	yy已存在	创建时间改为当前时间
+touch -t 201211222310 xx	更改为以前的时间
+
+umask
+umask -S
+
+隐藏权限
+lsattr	查看属性
+chattr	添加属性
+chattr +a filename
+a	只能添加不能删除
+i	不能更改
+
+文件特殊权限
+``
+$()	
+echo "gddf `which passwd` dfgdh"	
+chmod u+s `which vim`	
+chmod g+s filename	继承组
+chmod o+t filename	其他用户不能删除，只能对文件夹加t
+chmod 1644 filename
+chmod 2644 filename
+chmod 4644 filename
+
+file	查看文件类型
+
+which ls	查看文件位置
+whereis ls	查找说有包含ls的文件
+whereis -b ls	二进制文件
+whereis -m ls	manpage文件
+locate filename	查找普通文件，无法查找新创建的文件，数据库中不存在
+updatedb	更新数据库
+locate -i filename	忽略大小写
+
+find 目录 -属性 值
+find / -name li
+find / -user li
+find / -user li -group li
+find / -user li or -group li
+find -size 4M
+find -size +2M
+find -size +2M -size -5M	大于2M小雨5M
+find -cmin -1
+find -ctime -1
+find -newer file1t
+find /mnt -perm 222
+find /mnt -perm +222	或
+find /mnt -perm -222 	且
+
+
+
